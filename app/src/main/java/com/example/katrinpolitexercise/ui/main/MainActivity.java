@@ -13,6 +13,7 @@ import com.example.katrinpolitexercise.ui.login.LoginActivity;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
@@ -32,13 +33,20 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getActivityComponent().inject(this);
+        setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(MainActivity.this);
+     //   email = MainActivity.getStartIntent(MainActivity.this).getStringExtra("Email");
+      Intent intent = getIntent();
+       email = intent.getStringExtra("Email");
+        mPresenter.onMainViewCreated(email);
+
     }
 
     @OnClick(R.id.btn_logout)
     void onLogoutClicked(View v) {
-        email = MainActivity.getStartIntent(MainActivity.this).getStringExtra("Email");
+       /// email = MainActivity.getStartIntent(MainActivity.this).getStringExtra("Email");
         mPresenter.onLogoutClicked(email);
     }
 
@@ -50,18 +58,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void openLoginActivity() {
-        Intent intent = LoginActivity.getStartIntent(MainActivity.this);
+       // Intent intent = LoginActivity.getStartIntent(MainActivity.this);
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
     @Override
     public void showUserEmail(String currEmail) {
-mCurrEmail.setText(currEmail);
+        mCurrEmail.setText(currEmail);
     }
 
     @Override
     public void showUserPass(String currPass) {
-mCurrPass.setText(currPass);
+        mCurrPass.setText(currPass);
     }
 }

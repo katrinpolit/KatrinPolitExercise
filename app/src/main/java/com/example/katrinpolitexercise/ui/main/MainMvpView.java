@@ -9,6 +9,7 @@ import com.example.katrinpolitexercise.ui.base.MvpView;
 public interface MainMvpView extends MvpView {
 
     void openLoginActivity();
-    void showUserEmail(String currEmail);
-    void showUserPass(String currPass);
+    void showUserEmail(String email);
+    void showUserPass(String email);
+
 }

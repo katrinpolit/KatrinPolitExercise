@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 import com.example.katrinpolitexercise.R;
@@ -14,6 +13,7 @@ import com.example.katrinpolitexercise.ui.main.MainActivity;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -25,11 +25,11 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     @Inject
     LoginMvpPresenter<LoginMvpView> mPresenter;
 
-    @BindView(R.id.email)
-     AutoCompleteTextView mEmailView;
+    @BindView(R.id.et_email)
+    EditText mEmailEditText;
 
-    @BindView(R.id.password)
-     EditText mPasswordView;
+    @BindView(R.id.et_password)
+    EditText mPasswordEditText;
     //  private View mProgressView;
     //  private View mLoginFormView;
 
@@ -42,14 +42,15 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_login1);
+        getActivityComponent().inject(this);
+        setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(LoginActivity.this);
     }
 
-    @OnClick
+    @OnClick(R.id.btn_login)
     void onLoginClicked(View v) {
-        mPresenter.onLoginBtnClicked(mEmailView.getText().toString(), mPasswordView.getText().toString());
+        mPresenter.onLoginBtnClicked(mEmailEditText.getText().toString(), mPasswordEditText.getText().toString());
     }
 
 
@@ -63,7 +64,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     @Override
     public void openMainActivity() {
         Intent intent = MainActivity.getStartIntent(LoginActivity.this);
-        intent.putExtra("Email", mEmailView.getText().toString());
+        intent.putExtra("Email", mEmailEditText.getText().toString());
         startActivity(intent);
         finish();
     }
@@ -73,5 +74,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
         mPresenter.onDetach();
         super.onDestroy();
     }
+
+
 }
 

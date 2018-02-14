@@ -9,6 +9,7 @@ import com.example.katrinpolitexercise.ui.base.MvpPresenter;
 public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
 
     void  onLogoutClicked(String email);
-    void showCurrEmail(String email);
-    void showCurrPass(String email);
+    void onMainViewCreated(String email);
+
+
 }

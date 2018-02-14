@@ -4,23 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.example.katrinpolitexercise.ui.main.MainActivity">
 
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true">
     <TextView
         android:id="@+id/tv_currEmail"
         android:layout_width="wrap_content"
-        android:layout_height="14dp"
-      android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"
-       />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="80dp"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/tv_currPass"
         android:layout_width="wrap_content"
-        android:layout_height="14dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tv_currEmail"
-        android:layout_margin="15dp"
+        android:layout_margin="25dp"
+        android:textColor="@color/black"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -30,4 +37,6 @@
         android:layout_below="@id/tv_currPass"
         android:layout_centerHorizontal="true"
         android:text="@string/log_out"/>
+</LinearLayout>
+
 </RelativeLayout>

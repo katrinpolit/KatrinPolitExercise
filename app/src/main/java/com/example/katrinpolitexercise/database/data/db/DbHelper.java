@@ -10,4 +10,5 @@ public interface DbHelper {
     Long insertUser(final LoginData loginData);
     LoginData getUsers(String email);
     void deleteUser(String email);
+
 }

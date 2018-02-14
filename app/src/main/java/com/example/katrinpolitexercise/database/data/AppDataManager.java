@@ -5,18 +5,18 @@ import android.content.Context;
 import com.example.katrinpolitexercise.database.data.db.DbHelper;
 import com.example.katrinpolitexercise.database.data.greenDAOclasses.LoginData;
 import com.example.katrinpolitexercise.di.ApplicationContext;
-import com.example.katrinpolitexercise.di.Singleton;
 
 import javax.inject.Inject;
 
 /**
  * Created by Катюша on 13.02.2018.
  */
-@Singleton
+@javax.inject.Singleton
 public class AppDataManager implements DataManager {
 
     private final Context mContext;
     private final DbHelper mDbHelper;
+
 
     @Inject
     public AppDataManager(@ApplicationContext Context context, DbHelper dbHelper){
@@ -37,4 +37,8 @@ public class AppDataManager implements DataManager {
     public void deleteUser(String email) {
         mDbHelper.deleteUser(email);
     }
+
+
+
+
 }

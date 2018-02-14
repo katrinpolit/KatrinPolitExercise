@@ -11,7 +11,7 @@ import javax.inject.Inject;
 /**
  * Created by Катюша on 13.02.2018.
  */
-
+@javax.inject.Singleton
 public class DbOpenHelper extends DaoMaster.OpenHelper {
     @Inject
     public DbOpenHelper(@ApplicationContext Context context, @DatabaseInfo String name) {

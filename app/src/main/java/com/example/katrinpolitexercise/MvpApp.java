@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.example.katrinpolitexercise.database.data.DataManager;
 import com.example.katrinpolitexercise.di.component.ApplicationComponent;
+import com.example.katrinpolitexercise.di.component.DaggerApplicationComponent;
+import com.example.katrinpolitexercise.di.modules.ApplicationModule;
 
 import javax.inject.Inject;
 
@@ -22,5 +24,17 @@ public class MvpApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+mApplicationComponent = DaggerApplicationComponent.builder()
+        .applicationModule(new ApplicationModule(this)).build();
+   mApplicationComponent.inject(this);
     }
+
+
+    public ApplicationComponent getmApplicationComponent() {
+        return mApplicationComponent;
+    }
+
+    /*public void setmApplicationComponent(ApplicationComponent mApplicationComponent) {
+        this.mApplicationComponent = mApplicationComponent;
+    }*/
 }

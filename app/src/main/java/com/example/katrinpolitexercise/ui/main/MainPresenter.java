@@ -27,7 +27,16 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     }
 
     @Override
-    public void showCurrEmail(String email) {
+    public void onMainViewCreated(String email) {
+
+
+   getCurrEmail(email);
+   getCurrPass(email);
+
+    }
+
+
+    public void getCurrEmail(String email) {
 
         final String currUserEmail = getDataManager().getUsers(email).getEmail();
         if (currUserEmail!= null && !currUserEmail.isEmpty()){
@@ -36,8 +45,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
 
     }
 
-    @Override
-    public void showCurrPass(String email) {
+
+    public void getCurrPass(String email) {
         final String currPass = getDataManager().getUsers(email).getPass();
         if(currPass!=null && !currPass.isEmpty()){
             getMvpView().showUserPass(currPass);

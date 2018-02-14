@@ -3,15 +3,20 @@ package com.example.katrinpolitexercise.database.data.db;
 import com.example.katrinpolitexercise.database.data.greenDAOclasses.DaoMaster;
 import com.example.katrinpolitexercise.database.data.greenDAOclasses.DaoSession;
 import com.example.katrinpolitexercise.database.data.greenDAOclasses.LoginData;
-import com.example.katrinpolitexercise.di.Singleton;
+
+import javax.inject.Inject;
 
 /**
  * Created by Катюша on 13.02.2018.
  */
-@Singleton
+@javax.inject.Singleton
 public class AppDbHelper implements DbHelper {
 
    private final DaoSession mDaoSession;
+
+
+
+   @Inject
    public AppDbHelper(DbOpenHelper dbOpenHelper){
        mDaoSession = new DaoMaster(dbOpenHelper.getWritableDb()).newSession();
    }
@@ -30,4 +35,6 @@ public class AppDbHelper implements DbHelper {
     public void deleteUser(String email) {
         mDaoSession.getLoginDataDao().deleteByKey(email);
     }
+
+
 }

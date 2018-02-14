@@ -16,4 +16,11 @@
     </string>
     <string name="log_out">Log out</string>
     <string name="welcome">Welcome!</string>
+
+    <string name="some_error">Some Error Occurred!</string>
+
+    <!--Login Validation-->
+    <string name="empty_email">Please provide a non empty email.</string>
+    <string name="invalid_email">Please provide a valid email.</string>
+    <string name="empty_password">Please provide a non empty password.</string>
 </resources>

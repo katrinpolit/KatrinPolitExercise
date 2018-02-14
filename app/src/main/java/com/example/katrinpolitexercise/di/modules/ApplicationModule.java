@@ -3,12 +3,15 @@ package com.example.katrinpolitexercise.di.modules;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.katrinpolitexercise.utils.AppConstants;
 import com.example.katrinpolitexercise.database.data.AppDataManager;
 import com.example.katrinpolitexercise.database.data.DataManager;
 import com.example.katrinpolitexercise.database.data.db.AppDbHelper;
 import com.example.katrinpolitexercise.database.data.db.DbHelper;
 import com.example.katrinpolitexercise.di.ApplicationContext;
-import com.example.katrinpolitexercise.di.Singleton;
+import com.example.katrinpolitexercise.di.DatabaseInfo;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -37,17 +40,21 @@ public class ApplicationModule {
     }
 
     @Provides
-    @Singleton
+  @Singleton
     DataManager provideDataManager(AppDataManager appDataManager){
         return appDataManager;
     }
 
     @Provides
-    @Singleton
+ @Singleton
     DbHelper provideDbHelper(AppDbHelper appDbHelper){
         return appDbHelper;
     }
 
-
+    @Provides
+    @DatabaseInfo
+    String provideDatabaseName() {
+        return AppConstants.DB_NAME;
+    }
 
 }
